@@ -253,7 +253,7 @@ def image_captions(temp, top_p):
               "frequency_penalty": 0.2
           },
       ):
-        event_str = str(event)
+        event_str = event
         event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
         st.write(event_str)
   
