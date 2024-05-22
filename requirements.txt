@@ -1,0 +1,7 @@
+streamlit
+opencage
+transformers
+#tf-keras
+replicate
+#torch
+#tensorflow
