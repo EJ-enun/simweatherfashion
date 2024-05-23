@@ -263,11 +263,11 @@ def image_captions(temp, top_p):
             st.session_state.messages = [{"role": "assistant", "content": "Hi. I'm Arctic, a new, efficient, intelligent, and truly open language model created by Snowflake AI Research. Ask me anything."}]
 
         # Display or clear chat messages
-        for message in st.session_state.messages:
-            st.session_state.messages = [{"role": "assistant", "content":str(event)}]
-    	    with st.chat_message(message["role"]):
-                st.write(message["content"])
-
+       
+	for message in st.session_state.messages:
+          with st.chat_message(message["role"]):
+	    st.session_state.messages = [{"role": "assistant", "content":str(event)}]
+            st.write(message["content"])
 
 
 
