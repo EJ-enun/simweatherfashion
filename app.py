@@ -264,7 +264,7 @@ def image_captions(temp, top_p):
 
         # Display or clear chat messages
         for message in st.session_state.messages:
-    	        with st.chat_message(message["role"], avatar=icons[message["role"]]):
+    	        with st.chat_message(message["role"]):
         	        st.write(message["content"])
 
 
