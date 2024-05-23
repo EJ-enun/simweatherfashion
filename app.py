@@ -254,13 +254,14 @@ def image_captions(temp, top_p):
               "frequency_penalty": 0.2
           },
       ):
-        event_str = event
+        event_str = str(event)
         event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
         st.write(event_str)
 	# Create a button for copying text
-        if st.button("Copy to clipboard"):
-             #pyperclip.copy(event_str)
-             st.write("Text copied to clipboard")
+        # Display or clear chat messages
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"], avatar=icons[message["role"]]):
+                st.write(message["content"])
 
   
 
