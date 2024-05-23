@@ -253,10 +253,9 @@ def image_captions(temp, top_p):
               "presence_penalty": 1.15,
               "frequency_penalty": 0.2
           },
-      ):
-        event_str = str(event)
-        event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
-        #st.write_stream(event)  # Now write the processed event string
+      ):yield str(event)
+
+def display_resp(event):	    
 	
         # Store LLM-generated responses
         if "messages" not in st.session_state.keys():
@@ -266,7 +265,8 @@ def image_captions(temp, top_p):
        
         for message in st.session_state.messages:
           with st.chat_message(message["role"]):
-            st.session_state.messages = [{"role": "assistant", "content":str(event).replace('\n', ' ')}]
+	    full_response = st.write_stream(event)
+            st.session_state.messages = [{"role": "assistant", "content":full_response)}]
             st.write(message["content"])
 
 
@@ -292,7 +292,7 @@ def main():
   get_replicate_api_token()
   address()
   wardrobe(options)
-  image_captions(temperature, top_p)
+  display_resp(image_captions(temperature, top_p))
   #stored_caption = store_caption(image_captions(temperature, top_p))
 #  show_caption(stored_caption)
 if __name__ == "__main__":
