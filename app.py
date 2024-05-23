@@ -266,7 +266,7 @@ def image_captions(temp, top_p):
        
         for message in st.session_state.messages:
           with st.chat_message(message["role"]):
-	    st.session_state.messages = [{"role": "assistant", "content":str(event)}]
+            st.session_state.messages = [{"role": "assistant", "content":str(event)}]
             st.write(message["content"])
 
 
