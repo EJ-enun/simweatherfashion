@@ -244,7 +244,7 @@ def image_captions(temp, top_p):
           input={
               "top_k": 50,
               "top_p": top_p,
-              "prompt": f" Write a creative caption about only the descriptions made by this salesforce/blip model {out_blip} and do not use the word 'None' in any of your responses. ",
+              "prompt": f" Write a creative caption about only the descriptions made here {out_blip} and do not use the word 'None' in any of your responses. ",
               "temperature": temp,
               "max_new_tokens": 512,
               "min_new_tokens": 0,
