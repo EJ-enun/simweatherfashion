@@ -260,13 +260,13 @@ def image_captions(temp, top_p):
 	
         # Store LLM-generated responses
         if "messages" not in st.session_state.keys():
-            st.session_state.messages = [{"role": "assistant", "content": "Hi. I'm Arctic, a new, efficient, intelligent, and truly open language model created by Snowflake AI Research. Ask me anything."}]
+            st.session_state.messages = [{"role": "assistant", "content": "Hi. I'm Arctic, a new, efficient, intelligent, and truly open language model created by Snowflake AI Research."}]
 
         # Display or clear chat messages
        
         for message in st.session_state.messages:
           with st.chat_message(message["role"]):
-            st.session_state.messages = [{"role": "assistant", "content":str(event)}]
+            st.session_state.messages = [{"role": "assistant", "content":str(event).replace('\n', ' ')}]
             st.write(message["content"])
 
 
