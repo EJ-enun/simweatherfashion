@@ -259,6 +259,7 @@ def image_captions(temp, top_p):
         st.write(event_str)  # Now write the processed event string
 def store_caption(message): 
         # Display or clear chat messages
+	message = 0
         with st.chat_message("captain captions"):
           response = event_str
           full_response = st.write_stream(response)
