@@ -256,12 +256,12 @@ def image_captions(temp, top_p):
       ):
         event_str = str(event)
         event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
-        st.write(event_str)
+        #st.write(event_str)
 	# Create a button for copying text
         # Display or clear chat messages
         for message in st.session_state.messages:
-            with st.chat_message(message["role"], avatar=icons[message["role"]]):
-                st.write(message["content"])
+            with st.chat_message(message["role"]]):
+                st.write(message[event_str])
 
   
 
