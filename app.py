@@ -256,7 +256,7 @@ def image_captions(temp, top_p):
       ):
         event_str = str(event)
         event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
-        st.write_stream(event)  # Now write the processed event string
+        st.write_stream(str(event))  # Now write the processed event string
 
 
 
