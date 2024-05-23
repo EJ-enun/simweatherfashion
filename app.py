@@ -258,14 +258,14 @@ def image_captions(temp, top_p):
         event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
         #st.write_stream(event)  # Now write the processed event string
 	
-	# Store LLM-generated responses
-	if "messages" not in st.session_state.keys():
-    		st.session_state.messages = [{"role": "assistant", "content": "Hi. I'm Arctic, a new, efficient, intelligent, and truly open language model created by Snowflake AI Research. Ask me anything."}]
+        # Store LLM-generated responses
+        if "messages" not in st.session_state.keys():
+            st.session_state.messages = [{"role": "assistant", "content": "Hi. I'm Arctic, a new, efficient, intelligent, and truly open language model created by Snowflake AI Research. Ask me anything."}]
 
-	# Display or clear chat messages
-	for message in st.session_state.messages:
-    		with st.chat_message(message["role"], avatar=icons[message["role"]]):
-        		st.write(message["content"])
+        # Display or clear chat messages
+        for message in st.session_state.messages:
+    	        with st.chat_message(message["role"], avatar=icons[message["role"]]):
+        	        st.write(message["content"])
 
 
 
