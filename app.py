@@ -11,8 +11,7 @@ from transformers import pipeline, AutoTokenizer
 import os
 import tempfile
 import webbrowser
-from streamlit_clipboard import st_clipboard_text_input, st_clipboard_button
-
+import pyperclip
 
 # API keys and tokens are defined
 REPLICATE_API_TOKEN='r8_70DiHD1crmyex93p560AlTEP8YLzSjR1AupYr'
