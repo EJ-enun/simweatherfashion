@@ -259,8 +259,8 @@ def image_captions(temp, top_p):
         st.write(event_str)
 	# Create a button for copying text
         if st.button("Copy to clipboard"):
+           pyperclip.copy(event_str)
            st.write("Text copied to clipboard")
-	   pyperclip.copy(event_str)
 
   
 
