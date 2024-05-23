@@ -5,3 +5,4 @@ transformers
 replicate
 #torch
 #tensorflow
+streamlit_clipboard 
