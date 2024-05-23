@@ -259,9 +259,15 @@ def image_captions(temp, top_p):
         #st.write(event_str)
 	# Create a button for copying text
         # Display or clear chat messages
+	if st.session_state.messages[-1]["role"] != "assistant":
+            with st.chat_message("captain captions"):
+                response = event_str
+                full_response = st.write_stream(response)
+            message = {"role": "assistant", "content": full_response}
+            st.session_state.messages.append(message)
         for message in st.session_state.messages:
             with st.chat_message(message["role"]):
-                st.write(message[event_str])
+                st.write(message["content"])
 
   
 
