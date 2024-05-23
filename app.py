@@ -257,17 +257,19 @@ def image_captions(temp, top_p):
         event_str = str(event)
         event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
         st.write(event_str)  # Now write the processed event string
- 
+def store_caption(message): 
         # Display or clear chat messages
         with st.chat_message("captain captions"):
           response = event_str
           full_response = st.write_stream(response)
           message = {"role": "assistant", "content": full_response}
-          st.session_state.messages.append(message)
-
+	  st.session_state.messages.append(message)
+          return message
+		
+def show_caption(messsage):
        for message in st.session_state.messages:
           with st.chat_message(message["role"]):
-            st.write(message["content"])
+            st.write(message)
 
 
   
@@ -291,7 +293,7 @@ def main():
   get_replicate_api_token()
   address()
   wardrobe(options)
-  image_captions(temperature, top_p)
-
+  stored_caption = store_caption(image_captions(temperature, top_p))
+  show_caption(stored_caption)
 if __name__ == "__main__":
     main()
