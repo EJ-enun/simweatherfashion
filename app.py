@@ -259,8 +259,9 @@ def image_captions(temp, top_p):
         event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
         st.write(event_str)
 	# Create a button for copying text
-        if st_clipboard_button("Copy to clipboard"):
+        if st.button("Copy to clipboard"):
            st.write("Text copied to clipboard")
+	   pyperclip.copy(event_str)
 
   
 
