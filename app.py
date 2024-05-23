@@ -263,8 +263,8 @@ def store_caption(message):
           response = event_str
           full_response = st.write_stream(response)
           message = {"role": "assistant", "content": full_response}
-	  st.session_state.messages.append(message)
-          return message
+        st.session_state.messages.append(message)
+        return message
 		
 def show_caption(messsage):
        for message in st.session_state.messages:
