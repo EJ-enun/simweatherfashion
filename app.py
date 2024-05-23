@@ -11,6 +11,8 @@ from transformers import pipeline, AutoTokenizer
 import os
 import tempfile
 import webbrowser
+from streamlit_clipboard import st_clipboard_text_input, st_clipboard_button
+
 
 # API keys and tokens are defined
 REPLICATE_API_TOKEN='r8_70DiHD1crmyex93p560AlTEP8YLzSjR1AupYr'
@@ -256,6 +258,10 @@ def image_captions(temp, top_p):
         event_str = event
         event_str = event_str.replace('\n', ' ')  # Replace newline characters with spaces
         st.write(event_str)
+	# Create a button for copying text
+        if st_clipboard_button("Copy to clipboard"):
+           st.write("Text copied to clipboard")
+
   
 
 def reset_app():
