@@ -90,7 +90,7 @@ def set_gen_image_load():
     htp = "https://raw.githubusercontent.com/EJ-enun/weatherfashion/main/filed.png"
     col1, col2, col3 = st.columns([1,6,1])
     with col2:
-        return st.image(htp, caption='You are almost done, Keep Going!')
+        return st.image(htp, caption='You are almost done, Keep Going!') 
 
 # Function to consume forecast data
 def consumeOne(forecast):
