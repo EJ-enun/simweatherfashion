@@ -216,6 +216,7 @@ def arctic_gen(weather, options):
     },
 ): yield str(event)
 def gen_image_from_arctic_prompt(prompt):
+    text = prompt
     st.text_input(prompt, text)
     if st.button("Generate with Arctic"):
 	    
