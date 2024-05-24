@@ -216,8 +216,11 @@ def arctic_gen(weather, options):
     },
 ): yield str(event)
 def gen_image_from_arctic_prompt(prompt):
+    st.input(prompt, text)
+    if st.button("Generate with Arctic"):
+	    
         try:
-          payload = {"inputs": prompt}
+          payload = {"inputs": text}
           image_data = query_stable_diff(payload)
           image = Image.open(io.BytesIO(image_data))
           st.image(image, caption="Generated Image")
