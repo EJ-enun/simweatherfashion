@@ -318,7 +318,7 @@ def main():
   options = ["Male", "Female", "Non-binary"]
   selected_options = st.multiselect("Choose Gender:", options)
   get_replicate_api_token()
-  address()
+  address(options)
   wardrobe(options)
   display_resp(image_captions(temperature, top_p))
   #stored_caption = store_caption(image_captions(temperature, top_p))
