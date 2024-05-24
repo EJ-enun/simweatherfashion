@@ -302,7 +302,7 @@ def display_resp(event):
             full_response = st.write_stream(event)
             st.session_state.messages = [{"role": "assistant", "content":full_response}]
             st.write(message["content"])
-            return full_response
+            return message["content"]
 
 
   
