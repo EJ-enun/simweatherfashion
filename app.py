@@ -223,8 +223,7 @@ def gen_image_from_arctic_prompt(prompt):
           st.image(image, caption="Generated Image")
         except Exception as e:
           st.error(f"Error generating image: {e}")
-      else:
-        st.warning("Please enter a description.")
+
 
 def address(options):
     address = st.text_input("Address:")
