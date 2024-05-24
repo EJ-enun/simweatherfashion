@@ -223,7 +223,7 @@ def gen_image_from_arctic_prompt(prompt):
 	    
         try:
           payload = {"inputs": display_resp(prompt)}
-	  st.write(payload)
+          st.write(payload)
           image_data = query_stable_diff(payload)
           image = Image.open(io.BytesIO(image_data))
           st.image(image, caption="Generated Image")
