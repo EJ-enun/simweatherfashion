@@ -205,7 +205,7 @@ def arctic_gen(weather, options):
     input={
         "top_k": 50,
         "top_p": 0.9,
-        "prompt": f"Generate clothes and outfits for {options} in {weather} weather. Do not explain your suggestions, just suggest the clothes. Do not add bullet points",
+        "prompt": f"Generate clothes and outfits for {options} in {weather} weather. Do not explain your suggestions, just suggest the clothes. Do not add bullet points or numbers, use only commas as separators",
         "temperature": 0.2,
         "max_new_tokens": 512,
         "min_new_tokens": 0,
@@ -219,15 +219,15 @@ def gen_image_from_arctic_prompt(prompt):
     display_resp(prompt)
    # text = ' '.join(prompt)
    # st.text_input(prompt, text)
-    #if st.button("Generate with Arctic"):
+    if st.button("Generate with Arctic"):
 	    
-     #   try:
-     #     payload = {"inputs": text}
-     #     image_data = query_stable_diff(payload)
-     #     image = Image.open(io.BytesIO(image_data))
-     #     st.image(image, caption="Generated Image")
-     #   except Exception as e:
-     #     st.error(f"Error generating image: {e}")
+        try:
+         payload = {"inputs": display_resp(prompt)}
+          image_data = query_stable_diff(payload)
+          image = Image.open(io.BytesIO(image_data))
+          st.image(image, caption="Generated Image")
+        except Exception as e:
+          st.error(f"Error generating image: {e}")
 
 
 def address(options):
@@ -301,7 +301,7 @@ def display_resp(event):
             full_response = st.write_stream(event)
             st.session_state.messages = [{"role": "assistant", "content":full_response}]
             st.write(message["content"])
-
+            return full_response
 
 
   
