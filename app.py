@@ -219,16 +219,14 @@ def gen_image_from_arctic_prompt(prompt):
     display_resp(prompt)
    # text = ' '.join(prompt)
    # st.text_input(prompt, text)
-    if st.button("Generate with Arctic"):
-	    
-        try:
-          payload = {"inputs": display_resp(prompt)}
-          st.write(payload)
-          image_data = query_stable_diff(payload)
-          image = Image.open(io.BytesIO(image_data))
-          st.image(image, caption="Generated Image")
-        except Exception as e:
-          st.error(f"Error generating image: {e}")
+      
+    try:
+        payload = {"inputs": display_resp(prompt)}
+        image_data = query_stable_diff(payload)
+        image = Image.open(io.BytesIO(image_data))
+        st.image(image, caption="Generated Image")
+    except Exception as e:
+        st.error(f"Error generating image: {e}")
 
 
 def address(options):
