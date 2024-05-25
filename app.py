@@ -205,7 +205,7 @@ def arctic_gen(weather, options):
     input={
         "top_k": 50,
         "top_p": 0.9,
-        "prompt": f"Generate clothes and outfits for {options} in {weather} weather. Do not explain your suggestions, just suggest the clothes. Do not add bullet points or numbers, use only commas as separators",
+        "prompt": f"Generate 5 clothes and outfits for {options} in {weather} weather. Do not explain your suggestions, just suggest the clothes. use numbers as separators",
         "temperature": 0.2,
         "max_new_tokens": 512,
         "min_new_tokens": 0,
@@ -217,6 +217,7 @@ def arctic_gen(weather, options):
 ): yield str(event)
 def gen_image_from_arctic_prompt(prompt):
     display_resp(prompt)
+    
    # text = ' '.join(prompt)
    # st.text_input(prompt, text)
       
