@@ -217,7 +217,7 @@ def arctic_gen(weather, options):
     },
 ): yield str(event)
 
-def get_random_resp():
+def get_random_resp(prompt):
   st.write(prompt)
 
   # Split the string into suggestions based on the digit followed by a dot and space
@@ -238,9 +238,9 @@ def get_random_resp():
   
 
 def gen_image_from_arctic_prompt(prompt):
-    prompt = get_random_resp(prompt)      
+    prompt = get_random_resp(display_resp(prompt))      
     try:
-        payload = {"inputs": display_resp(prompt)}
+        payload = {"inputs": prompt}
         image_data = query_stable_diff(payload)
         image = Image.open(io.BytesIO(image_data))
         st.image(image, caption="Generated Image")
