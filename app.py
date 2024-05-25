@@ -216,7 +216,32 @@ def arctic_gen(weather, options):
     },
 ): yield str(event)
 def gen_image_from_arctic_prompt(prompt):
-    display_resp(prompt)
+    import random
+
+    # Sample string from the replicate.stream event
+    event_stream = "1. First suggestion 2. Second suggestion 3. Third suggestion 4. Fourth suggestion 5. Fifth suggestion"
+
+    # Split the string into suggestions based on the digit followed by a dot and space
+    suggestions = event_stream.split(r' \d\. ')
+    # Remove the first number from the first suggestion
+    suggestions[0] = suggestions[0][3:]
+
+    # Store the suggestions in a dictionary
+    responses = {i: suggestion for i, suggestion in enumerate(suggestions, 1)}
+
+    # Iterate through the dictionary and randomly pick one of the responses
+    for _ in range(5):
+        selected_response = random.choice(list(responses.values()))
+        print(f"Randomly selected response: {selected_response}")
+
+    # If you need to run this selection process in a loop, you can encapsulate it in a function
+    def select_random_response(responses_dict):
+        return random.choice(list(responses_dict.values()))
+
+    # Example usage
+     for _ in range(5):
+        print(f"Randomly selected response: {select_random_response(responses)}")
+
     
    # text = ' '.join(prompt)
    # st.text_input(prompt, text)
