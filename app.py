@@ -219,7 +219,7 @@ def arctic_gen(weather, options):
 
 def get_random_resp(prompt):
   st.write(prompt)
-
+  prompt = display_resp(prompt)
   # Split the string into suggestions based on the digit followed by a dot and space
   suggestions = prompt.split(r' \d\. ')
     
@@ -232,14 +232,13 @@ def get_random_resp(prompt):
   # Iterate through the dictionary and randomly pick one of the responses
   for _ in range(5):
     selected_response = random.choice(list(responses.values()))
-    st.write(selected_response)
     return selected_response
   
 
   
 
 def gen_image_from_arctic_prompt(prompt):
-    prompt = get_random_resp(display_resp(prompt))      
+    prompt = get_random_resp(prompt))      
     try:
         payload = {"inputs": prompt}
         image_data = query_stable_diff(payload)
