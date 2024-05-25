@@ -206,7 +206,7 @@ def arctic_gen(weather, options_r, options_g):
     input={
         "top_k": 50,
         "top_p": 0.9,
-	"prompt": f"Generate an outfit for a {options_r} {options_g} in {weather} weather. Do not explain your suggestions, just suggest the clothes.",
+	"prompt": f"Generate an outfit for a {options_r} {options_g} in {weather} weather. Do not explain your suggestions, just suggest the clothes. and do not use separators like numbers or bullet points.",
         #"prompt": f"Generate 5 clothes and outfits for a {options_r} {options_g} in {weather} weather. Do not explain your suggestions, just suggest the clothes. use numbers as separators",
         "temperature": 0.2,
         "max_new_tokens": 512,
