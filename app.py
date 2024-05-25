@@ -12,6 +12,7 @@ import os
 import tempfile
 import webbrowser
 import pyperclip
+import random
 
 # API keys and tokens are defined
 REPLICATE_API_TOKEN='r8_70DiHD1crmyex93p560AlTEP8YLzSjR1AupYr'
@@ -215,37 +216,29 @@ def arctic_gen(weather, options):
         "frequency_penalty": 0.2
     },
 ): yield str(event)
-def gen_image_from_arctic_prompt(prompt):
-    import random
 
-    # Sample string from the replicate.stream event
-    event_stream = "1. First suggestion 2. Second suggestion 3. Third suggestion 4. Fourth suggestion 5. Fifth suggestion"
+def get_random_resp():
+  st.write(prompt)
 
-    # Split the string into suggestions based on the digit followed by a dot and space
-    suggestions = event_stream.split(r' \d\. ')
-    # Remove the first number from the first suggestion
-    suggestions[0] = suggestions[0][3:]
-
-    # Store the suggestions in a dictionary
-    responses = {i: suggestion for i, suggestion in enumerate(suggestions, 1)}
-
-    # Iterate through the dictionary and randomly pick one of the responses
-    for _ in range(5):
-        selected_response = random.choice(list(responses.values()))
-        print(f"Randomly selected response: {selected_response}")
-
-    # If you need to run this selection process in a loop, you can encapsulate it in a function
-    def select_random_response(responses_dict):
-        return random.choice(list(responses_dict.values()))
-
-    # Example usage
-     for _ in range(5):
-        print(f"Randomly selected response: {select_random_response(responses)}")
-
+  # Split the string into suggestions based on the digit followed by a dot and space
+  suggestions = prompt.split(r' \d\. ')
     
-   # text = ' '.join(prompt)
-   # st.text_input(prompt, text)
-      
+  # Remove the first number from the first suggestion
+  suggestions[0] = suggestions[0][3:]
+
+  # Store the suggestions in a dictionary
+  responses = {i: suggestion for i, suggestion in enumerate(suggestions, 1)}
+
+  # Iterate through the dictionary and randomly pick one of the responses
+  for _ in range(5):
+    selected_response = random.choice(list(responses.values()))
+    return selected_response
+  
+
+  
+
+def gen_image_from_arctic_prompt(prompt):
+    prompt = get_random_resp(prompt)      
     try:
         payload = {"inputs": display_resp(prompt)}
         image_data = query_stable_diff(payload)
