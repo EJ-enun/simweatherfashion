@@ -244,7 +244,14 @@ def gen_image_from_arctic_prompt(prompt):
         payload = {"inputs": display_resp(prompt) }
         image_data = query_stable_diff(payload)
         image = Image.open(io.BytesIO(image_data))
+	image.save(image, format='JPEG')
         st.image(image, caption="Generated Image")
+	st.download_button(
+    label="Download image",
+    data=image.getvalue(),
+    file_name='image.jpg',
+    mime='image/jpeg'
+)
     except Exception as e:
         st.error(f"Error generating image: {e}")
 
@@ -347,7 +354,7 @@ def main():
   race_options = ["Asian", "Black", "Biracial",  "White"]
   gender_options = ["Male", "Female", "Non-binary"]
   gender_selected_option = st.multiselect("Choose Gender:", gender_options)
-  race_selected_option = st.selectbox('Select an option:', race_options)
+  race_selected_option = st.selectbox('Choose Race:', race_options)
   get_replicate_api_token()
   address(race_selected_option,gender_selected_option)
   wardrobe(race_selected_option, gender_selected_option)
