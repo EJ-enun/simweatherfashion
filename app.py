@@ -232,6 +232,7 @@ def get_random_resp(prompt):
   # Iterate through the dictionary and randomly pick one of the responses
   for _ in range(5):
     selected_response = random.choice(list(responses.values()))
+    st.write(selected_response)
     return selected_response
   
 
