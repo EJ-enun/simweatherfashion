@@ -244,7 +244,7 @@ def gen_image_from_arctic_prompt(prompt):
         payload = {"inputs": display_resp(prompt) }
         image_data = query_stable_diff(payload)
         image = Image.open(io.BytesIO(image_data))
-	image.save(image, format='JPEG')
+        image.save(image, format='JPEG')
         st.image(image, caption="Generated Image")
         st.download_button(label="Download image",data=image.getvalue(),file_name='image.jpg',mime='image/jpeg')
     except Exception as e:
