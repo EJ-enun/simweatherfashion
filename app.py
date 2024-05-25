@@ -238,7 +238,7 @@ def get_random_resp(prompt):
   
 
 def gen_image_from_arctic_prompt(prompt):
-    prompt = get_random_resp(prompt))      
+    prompt = get_random_resp(prompt)   
     try:
         payload = {"inputs": prompt}
         image_data = query_stable_diff(payload)
