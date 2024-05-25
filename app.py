@@ -319,7 +319,7 @@ def display_resp(event):
           with st.chat_message(message["role"]):
             full_response = st.write_stream(event)
             st.session_state.messages = [{"role": "assistant", "content":full_response}]
-            st.write(message["content"])
+            #st.write(message["content"])
             return message["content"]
 
 
