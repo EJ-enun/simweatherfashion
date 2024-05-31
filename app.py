@@ -13,6 +13,7 @@ import tempfile
 import webbrowser
 import pyperclip
 import random
+import pyperclip
 
 # API keys and tokens are defined
 REPLICATE_API_TOKEN='r8_70DiHD1crmyex93p560AlTEP8YLzSjR1AupYr'
@@ -309,6 +310,8 @@ def image_captions(temp, top_p):
           },
       ):yield str(event)
 
+
+
 def display_resp(event):	    
 	
         # Store LLM-generated responses
@@ -321,9 +324,18 @@ def display_resp(event):
           with st.chat_message(message["role"]):
             full_response = st.write_stream(event)
             st.session_state.messages = [{"role": "assistant", "content":full_response}]
-            #st.write(message["content"])
+            copy(message["content"])
             return message["content"]
 
+def copy(text):
+        col_spacer, col_copy, col_push = st.columns([0.5, 0.3, 0.2])
+        with col_copy:
+            copy_to_clipboard = st.button(label="Copy to clipboard :clipboard:")
+            if copy_to_clipboard:
+                try:
+                    pyperclip.copy(text)
+                except pyperclip.PyperclipException:
+                    st.warning("Copying currently not working for Linux deployments")
 
   
 
