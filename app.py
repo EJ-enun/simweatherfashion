@@ -365,7 +365,7 @@ def main():
   get_replicate_api_token()
   address(race_selected_option,gender_selected_option)
   wardrobe(race_selected_option, gender_selected_option)
-  display_resp(image_captions(temperature, top_p))
+  copy(display_resp(image_captions(temperature, top_p)))
   #stored_caption = store_caption(image_captions(temperature, top_p))
 #  show_caption(stored_caption)
 if __name__ == "__main__":
